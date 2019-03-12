@@ -3,35 +3,23 @@ import "./styles.css";
 
 export default class Pool extends React.Component {
   render() {
-    const { poolData, speed, ordinal, posConfig, active } = this.props;
+    const { poolData, position, active } = this.props;
 
     return (
       <div className="grid-2-columns">
         {(() =>
           poolData.map((pool, idx) => {
-            let animationConfig =
-              ordinal[active] <= posConfig[idx]
-                ? {
-                    animationName: `${pool.pos}-col-${ordinal[idx]}`,
-                    animationDuration: `${speed || "2000"}ms`
-                  }
-                : {};
-            if (idx !== active) {
-              animationConfig = {
-                ...animationConfig,
-                animationPlayState: "paused"
-              };
-            }
             return (
               <div
-                className={`grid-col ${pool.pos} ${
-                  active === idx ? "active" : "inactive"
-                }`}
+                className={`grid-col ${pool.pos} `}
                 style={{
                   backgroundImage: `url(${pool.img})`,
-                  ...animationConfig
+                  backgroundPosition: `${pool.pos} ${position[idx]}px`
                 }}
-              />
+              >
+                {" "}
+                {active === idx && <div className={`cube ${pool.pos}`} />}
+              </div>
             );
           }))()}
       </div>

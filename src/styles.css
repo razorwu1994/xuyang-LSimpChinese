@@ -1,29 +1,50 @@
 .grid-container {
-  display: grid;
-  grid-template-columns: 20% 2fr 20%;
-  width: 100%;
-  height: 100vh;
+    display: grid;
+    grid-template-columns: auto 400px auto;
+    width: 100%;
+    height: 100vh;
+    background-color: beige;
+    background: url('./images/background.jpg') no-repeat;
+    background-size: cover;
+    background-position: center
+}
+
+.poolWrapper {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 390px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    border-style: solid;
+    border-color: coral;
 }
 
 .modeController {
-  width: 80%;
-  height: 50px;
-  margin: auto;
-  display: inherit;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
+    width: 80%;
+    height: 50px;
+    margin: auto;
+    display: inherit;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .verticalCentralDiv {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.marginDiv {
-  margin-left: 10px;
-  margin-right: 10px;
-  height: 50%;
+.finalLine {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background: rgba(236, 128, 89, 0.5);
+    height: 135px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 150px 150px;
 }

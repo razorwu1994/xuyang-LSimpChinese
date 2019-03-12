@@ -12,35 +12,29 @@ const SPACE_KEY = 32;
 class App extends React.Component {
   state = {
     ordinal: [0, 0],
-    postConfig: [7, 7],
-    active: 0
+    postConfig: [4, 7],
+    active: 0,
+    position: [0, 0]
   };
   componentDidMount() {
     setInterval(() => {
       this.setState((state, props) => {
-        let ordinal = state.ordinal;
-        ordinal[state.active] =
-          ordinal[state.active] < 7 ? ordinal[state.active] + 1 : 0;
+        let position = state.position;
+        position[state.active] = (position[state.active] + 50) % 100000;
         return {
-          ordinal: ordinal
+          position: position
         };
       });
-    }, 1000);
+    }, 100);
     document.addEventListener("keydown", this._handleKeyDown);
   }
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   // return (
-  //   //   nextState.ordinal[this.state.active] !==
-  //   //   this.state.ordinal[this.state.active]
-  //   // );
-  // }
 
   _handleKeyDown = event => {
     event.preventDefault();
     switch (event.keyCode) {
       case SPACE_KEY:
         this.setState((state, props) => ({
-          active: state.active < 1 ? state.active + 1 : 0
+          active: state.active < 2 ? state.active + 1 : 0
         }));
         break;
       default:
@@ -54,19 +48,23 @@ class App extends React.Component {
         <div>
           <div className="verticalCentralDiv" />
         </div>
-        <div className="marginDiv">
+        <div className="poolWrapper">
+          <div className="finalLine" />
           <Pool
             poolData={[
-              { img: left, pos: "left" },
-              { img: right, pos: "right" }
+              { img: left, pos: "right" },
+              { img: right, pos: "left" }
             ]}
             ordinal={this.state.ordinal}
             speed={1000}
             posConfig={this.state.postConfig}
             active={this.state.active}
+            position={this.state.position}
           />{" "}
           <div style={{ textAlign: "center" }}>
-            <h4>Press Space to Select Character</h4>
+            <h2>
+              <strong>Press Space to Select Character</strong>
+            </h2>
           </div>
         </div>
         <div />
