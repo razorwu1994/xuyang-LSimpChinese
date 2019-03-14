@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles.css";
+import "../styles.css";
 
 export default class Pool extends React.Component {
   render() {

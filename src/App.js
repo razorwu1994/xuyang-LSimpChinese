@@ -1,17 +1,18 @@
 import React from "react";
 import "./styles.css";
 
-import Button from "./components/Button";
+import CustomModal from "./components/CustomModal";
 import Pool from "./components/Pool";
 
 import left from "./images/left-6.svg";
 import right from "./images/right-6.svg";
 
+import zhua from "./images/zhua.png";
 const SPACE_KEY = 32;
 const FONT_HEIGHT = 135;
 const LEFT = 0,
   RIGHT = 1;
-
+const MAX_PHASE = 3;
 const CHAR_MAP = {
   TISHOU: { BA: [[0, 2], [1, 4, 5], [], [], [], []] }
 };
@@ -23,9 +24,9 @@ class App extends React.Component {
   state = {
     active: LEFT,
     position: [FONT_HEIGHT, FONT_HEIGHT], //set to take first character in svg
-    left: "TISHOU",
-    right: "BA",
-    result: false
+    pool: ["TISHOU", "BA"],
+    result: null,
+    show: false
   };
   componentDidMount() {
     setInterval(() => {
@@ -42,77 +43,116 @@ class App extends React.Component {
 
   _handleKeyDown = event => {
     event.preventDefault();
-    switch (event.keyCode) {
-      case SPACE_KEY:
-        this._adjustPosition();
-        break;
-      default:
-        break;
+    if (!this.state.show) {
+      switch (event.keyCode) {
+        case SPACE_KEY:
+          this._adjustPosition();
+          break;
+        default:
+          break;
+      }
     }
   };
 
   _adjustPosition = () => {
     let position = this.state.position;
-    //0:left,1:right,2:final
-    position[this.state.active] =
-      parseInt(position[this.state.active] / FONT_HEIGHT, 10) * FONT_HEIGHT;
-    this.setState((state, props) => ({
-      active: state.active < 2 ? state.active + 1 : LEFT,
-      position: position
-    }));
-    if (this.state.active === 2) {
-      //get right,left index by checking size map, start at 135 px.
-      let leftIdx = Math.abs(
-          (position[LEFT] / FONT_HEIGHT - 1) % SIZE_MAP[this.state.left]
-        ),
-        rightIdx = Math.abs(
-          (position[RIGHT] / FONT_HEIGHT - 1) % SIZE_MAP[this.state.right]
-        );
+    switch (this.state.active) {
+      case 0:
+      case 1:
+        //0:left,1:right,2:final
+        position[this.state.active] =
+          parseInt(position[this.state.active] / FONT_HEIGHT, 10) * FONT_HEIGHT;
 
-      this.setState(state => ({
-        result: CHAR_MAP[this.state.left][this.state.right][leftIdx].includes(
-          rightIdx
-        )
-      }));
-      console.log(this.state.result);
+        this.setState((state, props) => ({
+          position: position
+        }));
+        if (this.state.active === 1) {
+          //get right,left index by checking size map, start at 135 px.
+          let leftIdx = Math.abs(
+              (position[LEFT] / FONT_HEIGHT - 1) %
+                SIZE_MAP[this.state.pool[LEFT]]
+            ),
+            rightIdx = Math.abs(
+              (position[RIGHT] / FONT_HEIGHT - 1) %
+                SIZE_MAP[this.state.pool[RIGHT]]
+            );
+
+          let result = CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
+            leftIdx
+          ].includes(rightIdx);
+          this.setState(state => ({
+            result
+          }));
+          console.log(result);
+          if (result) {
+            this.handleShow();
+          }
+        }
+        break;
+      case 2:
+        this.setState(state => ({
+          position: [FONT_HEIGHT, FONT_HEIGHT],
+          result: null
+        }));
+        break;
+      case 3:
+        //RESET
+        break;
+      default:
+        break;
     }
+    this.setState((state, props) => ({
+      active: state.active < MAX_PHASE ? state.active + 1 : 0
+    }));
+  };
+
+  handleClose = () => {
+    this.setState({ show: false });
+  };
+
+  handleShow = () => {
+    this.setState({ show: true });
   };
   render() {
     return (
-      <div className="grid-container">
-        <div>
-          <div className="verticalCentralDiv" />
-        </div>
-        <div className="poolWrapper">
-          <div className="finalLine" />
-          <Pool
-            poolData={[
-              { img: left, pos: "right" },
-              { img: right, pos: "left" }
-            ]}
-            active={this.state.active}
-            position={this.state.position}
-          />{" "}
-          <div style={{ textAlign: "center" }}>
-            {!this.state.result && (
-              <h2>
-                <strong>Press Space to Select Character </strong>
-              </h2>
-            )}
-            {this.state.result && (
-              <h1
-                style={{
-                  color: "coral",
-                  fontSize: "100px"
-                }}
-              >
-                <strong>Congrats </strong>
-              </h1>
-            )}
+      <React.Fragment>
+        <CustomModal
+          show={this.state.show}
+          handleClose={this.handleClose}
+          pinyin={"Zhua"}
+          definition={"Grab"}
+          backgroundImage={zhua}
+        />
+
+        <div className="grid-container">
+          <div>
+            <div className="verticalCentralDiv" />
           </div>
+          <div className="poolWrapper">
+            <div className="finalLine" />
+            <Pool
+              poolData={[
+                { img: left, pos: "right" },
+                { img: right, pos: "left" }
+              ]}
+              active={this.state.active}
+              position={this.state.position}
+            />{" "}
+            <div style={{ textAlign: "center", marginTop: "10px" }}>
+              <h1 className="result">
+                <strong>
+                  {this.state.result != null
+                    ? this.state.result
+                      ? "Congrats"
+                      : "Oops,try again"
+                    : "Press Space to Select Character "}
+                </strong>
+              </h1>
+            </div>
+          </div>
+          <div />
         </div>
-        <div />
-      </div>
+      </React.Fragment>
     );
   }
 }

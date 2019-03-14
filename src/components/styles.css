@@ -1,37 +1,53 @@
-.grid-3-rows {
-    display: grid;
-    grid-template-rows: 33% 33% 33%;
-    height: 80%;
-    max-height: 600px;
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    height: 100%;
+.modal-body {
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1rem;
+    width: 500px;
+    height: 300px;
 }
 
-.grid-2-columns {
-    display: grid;
-    grid-template-columns: 150px 150px;
-    width: 300px;
-    height: 100%;
+.modal.show .modal-dialog {
+    -webkit-transform: none;
+    transform: none;
+    top: 30%;
+    transform: translateY(-30%);
+}
+
+.modal-content {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 600px;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .3rem;
+    outline: 0;
+    background: url('../images/tian.jpg') no-repeat;
     margin: auto;
 }
 
-.grid-col {
-    height: 100%;
-    background-repeat: repeat-y;
-    background-size: 120px;
-    will-change: backgroundPosition;
-    transition: 0.3s background-position ease-in-out;
-    transform: translateZ(0);
+.infoWrapper {
+    width: 300px;
+    height: 300px;
+    background: white;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 300px;
+    padding: 20px;
 }
 
-.cube {
-    background: #ff7f50a1;
-    height: 135px;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
+.hanziWrapper {
+    width: 300px;
+    height: 300px;
+    background: white;
+    z-index: 999;
     position: absolute;
+    top: 0;
+    left: 0px;
 }
