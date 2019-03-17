@@ -4,48 +4,90 @@ import "./styles.css";
 import CustomModal from "./components/CustomModal";
 import Pool from "./components/Pool";
 
-import left from "./images/left-6.svg";
-import right from "./images/right-6.svg";
+import { MAX, getFacingUp } from "./utils/rotate";
 
 import zhua from "./images/zhua.png";
 const SPACE_KEY = 32;
-const FONT_HEIGHT = 135;
 const LEFT = 0,
   RIGHT = 1;
 const MAX_PHASE = 3;
 const CHAR_MAP = {
-  TISHOU: { BA: [[0, 2], [1, 4, 5], [], [], [], []] }
+  S3Left: {
+    S3Right: [
+      [0, 1, 2, 3, 4, 5],
+      [6, 7, 8, 9, 10, 12],
+      [5, 11, 12, 13, 14, 15],
+      [],
+      [],
+      []
+    ]
+  }
 };
-const SIZE_MAP = {
-  TISHOU: 6,
-  BA: 6
-};
+
+const S3Left = ["扌", "氵", "忄", "目", "贝", "钅"];
+const S3Right = [
+  "丸",
+  "彐",
+  "乇",
+  "工",
+  "广",
+  "勺",
+  "卂",
+  "昜",
+  "山",
+  "干",
+  "也",
+  "叉",
+  "川",
+  "凡",
+  "千",
+  "土"
+];
+
 class App extends React.Component {
   state = {
     active: LEFT,
-    position: [FONT_HEIGHT, FONT_HEIGHT], //set to take first character in svg
-    pool: ["TISHOU", "BA"],
+    position: [0, 0], //set to take first character in svg
+    pool: ["S3Left", "S3Right"],
     result: null,
-    show: false
+    show: false,
+    angleArray: [[], []],
+    charArray: [S3Left, S3Right],
+    unit: [S3Left, S3Right].map(group =>
+      parseFloat(MAX / group.length, 10).toFixed(2)
+    )
   };
   componentDidMount() {
-    setInterval(() => {
-      this.setState((state, props) => {
-        let position = state.position;
-        position[state.active] = (position[state.active] - 50) % 100000;
-        return {
-          position: position
-        };
-      });
-    }, 100);
+    this.rotate(10);
     document.addEventListener("keydown", this._handleKeyDown);
   }
-
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
+  }
+  rotate(interval) {
+    this.intervalID = setInterval(() => {
+      const deg = Math.max(0.8, Math.random());
+      this.setState((state, props) => {
+        let position = state.position;
+        position[state.active] = (position[state.active] + deg) % 360;
+        let angleArray = state.charArray.map((group, groupIdx) =>
+          group.map(
+            (char, charIdx) =>
+              (charIdx * state.unit[groupIdx] + state.position[groupIdx]) % 360
+          )
+        );
+        return {
+          position,
+          angleArray
+        };
+      });
+    }, interval);
+  }
   _handleKeyDown = event => {
-    event.preventDefault();
     if (!this.state.show) {
       switch (event.keyCode) {
         case SPACE_KEY:
+          event.preventDefault();
           this._adjustPosition();
           break;
         default:
@@ -53,50 +95,51 @@ class App extends React.Component {
       }
     }
   };
-
   _adjustPosition = () => {
-    let position = this.state.position;
+    let { position, angleArray } = this.state;
+
     switch (this.state.active) {
       case 0:
       case 1:
         //0:left,1:right,2:final
         position[this.state.active] =
-          parseInt(position[this.state.active] / FONT_HEIGHT, 10) * FONT_HEIGHT;
-
+          position[this.state.active] +
+          (MAX - getFacingUp(this.state.angleArray[this.state.active])); //add the difference
+        angleArray = this.state.charArray.map((group, groupIdx) =>
+          group.map(
+            (char, charIdx) =>
+              (charIdx * this.state.unit[groupIdx] +
+                this.state.position[groupIdx]) %
+              360
+          )
+        );
         this.setState((state, props) => ({
-          position: position
+          position,
+          angleArray
         }));
         if (this.state.active === 1) {
-          //get right,left index by checking size map, start at 135 px.
-          let leftIdx = Math.abs(
-              (position[LEFT] / FONT_HEIGHT - 1) %
-                SIZE_MAP[this.state.pool[LEFT]]
-            ),
-            rightIdx = Math.abs(
-              (position[RIGHT] / FONT_HEIGHT - 1) %
-                SIZE_MAP[this.state.pool[RIGHT]]
-            );
-
+          let match = this._determineMatch();
           let result = CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
-            leftIdx
-          ].includes(rightIdx);
+            match[LEFT]
+          ].includes(match[RIGHT]);
           this.setState(state => ({
             result
           }));
-          console.log(result);
           if (result) {
             this.handleShow();
           }
         }
         break;
       case 2:
+        clearInterval(this.intervalID);
         this.setState(state => ({
-          position: [FONT_HEIGHT, FONT_HEIGHT],
+          position: [0, 0],
           result: null
         }));
         break;
       case 3:
         //RESET
+        this.rotate(1, 10);
         break;
       default:
         break;
@@ -105,6 +148,9 @@ class App extends React.Component {
       active: state.active < MAX_PHASE ? state.active + 1 : 0
     }));
   };
+
+  _determineMatch = () =>
+    this.state.angleArray.map(group => group.findIndex(angle => angle === 0));
 
   handleClose = () => {
     this.setState({ show: false });
@@ -125,32 +171,34 @@ class App extends React.Component {
         />
 
         <div className="grid-container">
-          <div>
-            <div className="verticalCentralDiv" />
-          </div>
-          <div className="poolWrapper">
-            <div className="finalLine" />
+          <div className="top" />
+          <div className="middle">
             <Pool
               poolData={[
-                { img: left, pos: "right" },
-                { img: right, pos: "left" }
+                {
+                  angleArray: this.state.angleArray[0],
+                  charArray: this.state.charArray[0],
+                  unit: this.state.unit[0]
+                },
+                {
+                  angleArray: this.state.angleArray[1],
+                  charArray: this.state.charArray[1],
+                  unit: this.state.unit[1]
+                }
               ]}
-              active={this.state.active}
-              position={this.state.position}
-            />{" "}
-            <div style={{ textAlign: "center", marginTop: "10px" }}>
-              <h1 className="result">
-                <strong>
-                  {this.state.result != null
-                    ? this.state.result
-                      ? "Congrats"
-                      : "Oops,try again"
-                    : "Press Space to Select Character "}
-                </strong>
-              </h1>
-            </div>
+            />
           </div>
-          <div />
+          <div className="bottom">
+            <h1 className="result">
+              <strong>
+                {this.state.result != null
+                  ? this.state.result
+                    ? "Congrats"
+                    : "Oops,try again"
+                  : "Press Space to Select Character "}
+              </strong>
+            </h1>
+          </div>
         </div>
       </React.Fragment>
     );

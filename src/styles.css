@@ -1,41 +1,27 @@
 .grid-container {
     display: grid;
-    grid-template-columns: auto 400px auto;
-    width: 100%;
+    grid-template-rows: auto 500px auto;
     height: 100vh;
     background-color: beige;
-    background: url("./images/background.jpg") no-repeat;
+    background: url(/static/media/background.a30cc2fe.jpg) no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+.bottom {
+    text-align: center;
+    margin: 0px auto;
+    padding-top: 40px;
+    position: relative;
 }
 
 .poolWrapper {
     margin-left: 10px;
     margin-right: 10px;
-    height: 390px;
-    position: relative;
-    top: 30%;
-    transform: translateY(-30%);
+    height: 500px;
     border-style: solid;
     border-color: coral;
     border-radius: 45px;
-}
-
-.modeController {
-    width: 80%;
-    height: 50px;
-    margin: auto;
-    display: inherit;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.verticalCentralDiv {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 .finalLine {
@@ -57,24 +43,13 @@
     border-radius: 30px;
 }
 
-.grid-3-rows {
-    display: grid;
-    grid-template-rows: 33% 33% 33%;
-    height: 80%;
-    max-height: 600px;
-    position: absolute;
-    top: 30%;
-    -webkit-transform: translateY(-30%);
-    transform: translateY(-30%);
-    height: 100%;
-}
-
 .grid-2-columns {
     display: grid;
-    grid-template-columns: 150px 150px;
-    width: 300px;
+    grid-template-columns: 50% 50%;
+    width: 600px;
     height: 100%;
     margin: auto;
+    user-select: none;
 }
 
 .grid-col {

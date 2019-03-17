@@ -1,27 +1,42 @@
 import React from "react";
 import "../styles.css";
-
+import { carouselStyle } from "../utils/rotate";
 export default class Pool extends React.Component {
   render() {
-    const { poolData, position, active } = this.props;
-
+    const { poolData } = this.props;
     return (
       <div className="grid-2-columns">
-        {(() =>
-          poolData.map((pool, idx) => {
-            return (
+        {poolData.map((pool, idx) => {
+          return (
+            <div className="poolWrapper">
               <div
-                className={`grid-col ${pool.pos} `}
+                class="scene"
                 style={{
-                  backgroundImage: `url(${pool.img})`,
-                  backgroundPosition: `${pool.pos} ${position[idx]}px`
+                  perspective: `${(1000 * pool.charArray.length) / 16}px`,
+                  top: `${(130 * pool.charArray.length) / 16}px`
                 }}
               >
-                {" "}
-                {active === idx && <div className={`cube ${pool.pos}`} />}
+                <div class="carousel">
+                  {pool.charArray.map((char, id) => {
+                    return (
+                      <div
+                        style={carouselStyle(
+                          id,
+                          pool.unit,
+                          pool.angleArray[id],
+                          pool.charArray.length
+                        )}
+                        className="carousel__cell"
+                      >
+                        {char}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            );
-          }))()}
+            </div>
+          );
+        })}
       </div>
     );
   }
