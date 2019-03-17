@@ -1,16 +1,14 @@
 {
-  "main.css": "/xuyang-LSimpChinese/static/css/main.928598e9.chunk.css",
-  "main.js": "/xuyang-LSimpChinese/static/js/main.b6851eb5.chunk.js",
-  "main.js.map": "/xuyang-LSimpChinese/static/js/main.b6851eb5.chunk.js.map",
+  "main.css": "/xuyang-LSimpChinese/static/css/main.5d77ed4c.chunk.css",
+  "main.js": "/xuyang-LSimpChinese/static/js/main.10cfb3cb.chunk.js",
+  "main.js.map": "/xuyang-LSimpChinese/static/js/main.10cfb3cb.chunk.js.map",
   "runtime~main.js": "/xuyang-LSimpChinese/static/js/runtime~main.c7ad4f2e.js",
   "runtime~main.js.map": "/xuyang-LSimpChinese/static/js/runtime~main.c7ad4f2e.js.map",
-  "static/js/2.2322160f.chunk.js": "/xuyang-LSimpChinese/static/js/2.2322160f.chunk.js",
-  "static/js/2.2322160f.chunk.js.map": "/xuyang-LSimpChinese/static/js/2.2322160f.chunk.js.map",
+  "static/js/2.5ac01d60.chunk.js": "/xuyang-LSimpChinese/static/js/2.5ac01d60.chunk.js",
+  "static/js/2.5ac01d60.chunk.js.map": "/xuyang-LSimpChinese/static/js/2.5ac01d60.chunk.js.map",
   "index.html": "/xuyang-LSimpChinese/index.html",
-  "precache-manifest.281d4be8a8bac04d77f26c31faa4953e.js": "/xuyang-LSimpChinese/precache-manifest.281d4be8a8bac04d77f26c31faa4953e.js",
+  "precache-manifest.b5707c525fe4505c9cb86b68d5bc3854.js": "/xuyang-LSimpChinese/precache-manifest.b5707c525fe4505c9cb86b68d5bc3854.js",
   "service-worker.js": "/xuyang-LSimpChinese/service-worker.js",
-  "static/css/main.928598e9.chunk.css.map": "/xuyang-LSimpChinese/static/css/main.928598e9.chunk.css.map",
-  "static/media/styles.css": "/xuyang-LSimpChinese/static/media/tian.c48cd068.jpg",
-  "static/media/left-6.svg": "/xuyang-LSimpChinese/static/media/left-6.cd0bc049.svg",
-  "static/media/right-6.svg": "/xuyang-LSimpChinese/static/media/right-6.846c6eec.svg"
+  "static/css/main.5d77ed4c.chunk.css.map": "/xuyang-LSimpChinese/static/css/main.5d77ed4c.chunk.css.map",
+  "static/media/styles.css": "/xuyang-LSimpChinese/static/media/tian.c48cd068.jpg"
 }
