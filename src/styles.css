@@ -1,11 +1,17 @@
+.outerWrapper {
+    background-color: beige;
+    background: url("./images/background.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
 .grid-container {
     display: grid;
     grid-template-rows: auto 500px auto;
     height: 100vh;
-    background-color: beige;
-    background: url(/static/media/background.a30cc2fe.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
 }
 
 .bottom {
@@ -29,7 +35,7 @@
     top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    background: rgba(236, 128, 89, 0.5);
+    background: rgba(236, 128, 89, 0.2);
     height: 135px;
     width: 100%;
     display: grid;
@@ -68,4 +74,31 @@
     top: 50%;
     transform: translateY(-50%);
     position: absolute;
+}
+
+.btnGroup {
+    display: inline !important;
+    position: relative;
+    width: 100%;
+}
+
+.styleBtn {
+    width: 200px;
+    height: 150px;
+    border-radius: 30px;
+    background: white;
+    color: black;
+    border-color: #007bff;
+    font-size: 41px;
+}
+
+.styledRow {
+    padding: 100px;
+    text-align: center;
+}
+
+.centerDiv {
+    width: 80%;
+    margin: auto;
+    text-align: center;
 }
