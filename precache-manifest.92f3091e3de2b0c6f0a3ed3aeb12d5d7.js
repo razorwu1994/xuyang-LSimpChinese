@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "cb7d3f25cf73fcd7f33b",
+    "revision": "d99f511c6f91d1fc0d53",
     "url": "/xuyang-LSimpChinese/static/css/main.0f7e40f2.chunk.css"
   },
   {
-    "revision": "cb7d3f25cf73fcd7f33b",
-    "url": "/xuyang-LSimpChinese/static/js/main.b341acf2.chunk.js"
+    "revision": "d99f511c6f91d1fc0d53",
+    "url": "/xuyang-LSimpChinese/static/js/main.695482ec.chunk.js"
   },
   {
     "revision": "dd42ef80cd16568b7632",
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/xuyang-LSimpChinese/static/media/tian.c48cd068.jpg"
   },
   {
-    "revision": "665a3e80db11fe174179456c2bb79756",
+    "revision": "e5efa48a7de8ee8e09c9670c9b3a482c",
     "url": "/xuyang-LSimpChinese/index.html"
   }
 ];
