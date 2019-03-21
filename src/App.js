@@ -66,7 +66,7 @@ function Landing() {
 
 function App() {
   return (
-    <Router history={history}>
+    <Router history={history} basename="/xuyang-LSimpChinese/">
       <Switch>
         <Route exact path="/" component={BGHOC(Landing)} />
         <Route exact path="/game" component={BGHOC(Gameboard)} />
