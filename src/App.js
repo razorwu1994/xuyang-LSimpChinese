@@ -13,7 +13,7 @@ const BGHOC = WrappedComponet => {
     render() {
       return (
         <div className="outerWrapper">
-          <WrappedComponet />
+          <WrappedComponet {...this.props} />
         </div>
       );
     }

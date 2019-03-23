@@ -27,18 +27,23 @@ const CHAR_MAP = {
 };
 
 class Gameboard extends React.Component {
-  state = {
-    active: LEFT,
-    position: [0, 0], //set to take first character in svg
-    pool: ["S3Left", "S3Right"],
-    result: null,
-    show: false,
-    angleArray: [[], []],
-    charArray: [S3Left, S3Right],
-    unit: [S3Left, S3Right].map(group =>
-      parseFloat(MAX / group.length, 10).toFixed(2)
-    )
-  };
+  constructor(props) {
+    super(props);
+    console.log(this.props.route);
+    this.state = {
+      active: LEFT,
+      position: [0, 0], //set to take first character in svg
+      pool: ["S3Left", "S3Right"],
+      result: null,
+      show: false,
+      angleArray: [[], []],
+      charArray: [S3Left, S3Right],
+      unit: [S3Left, S3Right].map(group =>
+        parseFloat(MAX / group.length, 10).toFixed(2)
+      )
+    };
+  }
+
   componentDidMount() {
     this.rotate(10);
     document.addEventListener("keydown", this._handleKeyDown);
