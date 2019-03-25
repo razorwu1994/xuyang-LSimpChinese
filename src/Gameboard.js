@@ -7,7 +7,15 @@ import Pool from "./components/Pool";
 import { Link } from "react-router-dom";
 
 import { MAX, getFacingUp } from "./utils/rotate";
-import { S3Left, S3Right } from "./constants";
+import {
+  S3Left,
+  S3Right,
+  S4Right,
+  S5Right,
+  S6Right,
+  S7Right,
+  S8Right
+} from "./constants";
 import zhua from "./images/zhua.png";
 const SPACE_KEY = 32;
 const LEFT = 0,
@@ -22,26 +30,69 @@ const CHAR_MAP = {
       [],
       [],
       []
-    ]
+    ],
+    S4Right: [
+      [0, 1, 2, 3, 4, 5],
+      [6, 7, 8, 9, 10, 11],
+      [12, 13, 14, 15, 16, 17],
+      [8, 18, 19, 20, 21, 22],
+      [14, 22, 23, 24, 25],
+      [7, 25, 26, 27, 28, 29]
+    ],
+    S5Right: [
+      [0, 1, 2, 3, 4, 5],
+      [2, 6, 7, 8, 9, 10],
+      [0, 11, 12, 13, 14, 15],
+      [16, 17, 18, 19, 20, 21],
+      [13, 22, 23, 24, 25, 26],
+      [0, 26, 27, 28, 29, 30]
+    ],
+    S6Right: [
+      [0, 1, 2, 3, 4, 5],
+      [1, 6, 7, 8, 9, 10],
+      [11, 12, 13, 14, 15, 16],
+      [4, 11, 16, 17, 18, 19],
+      [20, 21, 22, 23, 24, 25],
+      [16, 27, 28, 29, 30, 31]
+    ],
+    S7Right: [[], [2, 6, 7, 8, 9, 10], [], [], [], []],
+    S8Right: [[], [], [], [], [0, 1, 2, 3, 4, 5], []]
   }
 };
-
+const RIGHT_MAP = {
+  3: { name: `S3Right`, value: S3Right },
+  4: { name: `S4Right`, value: S4Right },
+  5: { name: `S5Right`, value: S5Right },
+  6: { name: `S6Right`, value: S6Right },
+  7: { name: `S7Right`, value: S7Right },
+  8: { name: `S8Right`, value: S8Right }
+};
 class Gameboard extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(this.props.route);
-    this.state = {
-      active: LEFT,
-      position: [0, 0], //set to take first character in svg
-      pool: ["S3Left", "S3Right"],
-      result: null,
-      show: false,
-      angleArray: [[], []],
-      charArray: [S3Left, S3Right],
-      unit: [S3Left, S3Right].map(group =>
-        parseFloat(MAX / group.length, 10).toFixed(2)
-      )
-    };
+  state = {
+    active: LEFT,
+    position: [0, 0], //set to take first character in svg
+    result: null,
+    show: false,
+    angleArray: [[], []],
+    pool: ["S3Left", "S3Right"],
+    charArray: [S3Left, S3Right],
+    unit: [S3Left, S3Right].map(group =>
+      parseFloat(MAX / group.length, 10).toFixed(2)
+    )
+  };
+  componentWillMount() {
+    if (this.props.location.params == null) {
+      this.props.history.push("/");
+    } else {
+      let rightSet = RIGHT_MAP[this.props.location.params.stroke];
+      this.setState(state => ({
+        pool: ["S3Left", rightSet.name],
+        charArray: [S3Left, rightSet.value],
+        unit: [S3Left, rightSet.value].map(group =>
+          parseFloat(MAX / group.length, 10).toFixed(2)
+        )
+      }));
+    }
   }
 
   componentDidMount() {

@@ -20,48 +20,63 @@ const BGHOC = WrappedComponet => {
   }
   return withBGHOC;
 };
-function Landing() {
-  return (
-    <React.Fragment>
-      <ButtonGroup size="lg" className="btnGroup">
-        <Row className="styledRow">
-          {[3, 4, 5].map(stroke => (
-            <Col xs={4}>
-              <Button
-                id={stroke}
-                className="styleBtn"
-                size="lg"
-                type="checkbox"
-                name="radio"
-              >
-                strokes {stroke}
-              </Button>
-            </Col>
-          ))}
-        </Row>
-        <Row className="styledRow">
-          {[6, 7, 8].map(stroke => (
-            <Col xs={4}>
-              <Button
-                id={stroke}
-                className="styleBtn"
-                size="lg"
-                type="checkbox"
-                name="radio"
-              >
-                strokes {stroke}
-              </Button>
-            </Col>
-          ))}
-        </Row>
-      </ButtonGroup>
-      <div className="centerDiv">
-        <Link to="/game">
-          <Button size="lg">Start</Button>
-        </Link>
-      </div>
-    </React.Fragment>
-  );
+class Landing extends React.Component {
+  state = {
+    stroke: 3
+  };
+  selectStroke(stroke) {
+    this.setState((state, props) => ({ stroke }));
+  }
+  render() {
+    return (
+      <React.Fragment>
+        <ButtonGroup size="lg" className="btnGroup">
+          <Row className="styledRow">
+            {[3, 4, 5].map(stroke => (
+              <Col xs={4}>
+                <Button
+                  id={stroke}
+                  className="styleBtn"
+                  size="lg"
+                  type="checkbox"
+                  name="radio"
+                  onClick={() => this.selectStroke(stroke)}
+                >
+                  strokes {stroke}
+                </Button>
+              </Col>
+            ))}
+          </Row>
+          <Row className="styledRow">
+            {[6, 7, 8].map(stroke => (
+              <Col xs={4}>
+                <Button
+                  id={stroke}
+                  className="styleBtn"
+                  size="lg"
+                  type="checkbox"
+                  name="radio"
+                  onClick={() => this.selectStroke(stroke)}
+                >
+                  strokes {stroke}
+                </Button>
+              </Col>
+            ))}
+          </Row>
+        </ButtonGroup>
+        <div className="centerDiv">
+          <Link
+            to={{
+              pathname: "/game",
+              params: { stroke: this.state.stroke }
+            }}
+          >
+            <Button size="lg">Start</Button>
+          </Link>
+        </div>
+      </React.Fragment>
+    );
+  }
 }
 
 function App() {
