@@ -28,6 +28,7 @@ class Landing extends React.Component {
     this.setState((state, props) => ({ stroke }));
   }
   render() {
+    let style = { background: "#007bff", color: "white" };
     return (
       <React.Fragment>
         <ButtonGroup size="lg" className="btnGroup">
@@ -41,6 +42,7 @@ class Landing extends React.Component {
                   type="checkbox"
                   name="radio"
                   onClick={() => this.selectStroke(stroke)}
+                  style={this.state.stroke === stroke ? style : null}
                 >
                   strokes {stroke}
                 </Button>
@@ -57,6 +59,7 @@ class Landing extends React.Component {
                   type="checkbox"
                   name="radio"
                   onClick={() => this.selectStroke(stroke)}
+                  style={this.state.stroke === stroke ? style : null}
                 >
                   strokes {stroke}
                 </Button>
