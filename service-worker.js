@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/xuyang-LSimpChinese/precache-manifest.92f3091e3de2b0c6f0a3ed3aeb12d5d7.js"
+  "/xuyang-LSimpChinese/precache-manifest.3a7559c46c139092ba4fd24988b4a25f.js"
 );
 
 workbox.clientsClaim();
