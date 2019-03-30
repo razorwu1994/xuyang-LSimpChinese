@@ -1,0 +1,4 @@
+@font-face {
+  font-family: "KT";
+  src: local("KT"), url(./fonts/kt.TTF) format("truetype");
+}
