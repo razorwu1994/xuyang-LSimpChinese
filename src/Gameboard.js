@@ -123,7 +123,16 @@ class Gameboard extends React.Component {
     charArray: [S3Left, S3Right],
     unit: [S3Left, S3Right].map(group =>
       parseFloat(MAX / group.length, 10).toFixed(2)
-    )
+    ),
+    meta: {
+      pp1: "",
+      pp2: "",
+      result: "",
+      py: "",
+      pp1Definition: "",
+      pp2Definition: "",
+      resultDefinition: ""
+    }
   };
   componentWillMount() {
     if (this.props.location.params == null) {
@@ -179,6 +188,8 @@ class Gameboard extends React.Component {
         default:
           break;
       }
+    } else {
+      this.setState(state => ({ show: false }));
     }
   };
   _adjustPosition = () => {
@@ -208,34 +219,25 @@ class Gameboard extends React.Component {
           let result = CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
             match[LEFT]
           ].includes(match[RIGHT]);
-          // console.log(
-          //   CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
-          //     match[LEFT]
-          //   ],
-          //   match[RIGHT],
-          //   result,
-          //   match,
-          //   HANZI_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
-          //     match[LEFT]
-          //   ][
-          //     CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
-          //       match[LEFT]
-          //     ].findIndex(idx => idx === match[RIGHT])
-          //   ]
-          // );
-          if (result) {
-            // console.log(
 
-            //   HANZI_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
-            //     match[LEFT]
-            //   ][
-            //     CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
-            //       match[LEFT]
-            //     ].findIndex(idx => idx === match[RIGHT])
-            //   ]
-            // );
+          if (result) {
             this.setState(state => ({
-              result
+              meta: {
+                pp1: this.state.charArray[LEFT][match[LEFT]],
+                pp2: this.state.charArray[RIGHT][match[RIGHT]],
+                result:
+                  HANZI_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
+                    match[LEFT]
+                  ][
+                    CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
+                      match[LEFT]
+                    ].findIndex(idx => idx === match[RIGHT])
+                  ],
+                pp1Definition: "",
+                pp2Definition: "",
+                resultDefinition: "",
+                py: ""
+              }
             }));
             this.handleShow();
           }
@@ -276,9 +278,7 @@ class Gameboard extends React.Component {
         <CustomModal
           show={this.state.show}
           handleClose={this.handleClose}
-          pinyin={"Zhua"}
-          definition={"Grab"}
-          backgroundImage={zhua}
+          meta={this.state.meta}
         />
         <Link to="/">
           <Button size="lg">Back</Button>

@@ -3,8 +3,6 @@
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     padding: 1rem;
-    width: 500px;
-    height: 300px;
 }
 
 .modal.show .modal-dialog {
@@ -12,22 +10,22 @@
     transform: none;
     top: 30%;
     transform: translateY(-30%);
+    margin: 10%;
 }
 
 .modal-content {
+    width: 80vw;
     position: relative;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
-    width: 600px;
     pointer-events: auto;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, .2);
-    border-radius: .3rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
     outline: 0;
-    background: url('../images/tian.jpg') no-repeat;
     margin: auto;
 }
 
@@ -54,10 +52,6 @@
 
 * {
     box-sizing: border-box;
-}
-
-body {
-    font-family: sans-serif;
 }
 
 .scene {
@@ -92,4 +86,83 @@ body {
     font-weight: bold;
     color: white;
     text-align: center;
+}
+
+.def-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+}
+
+.square-border-sm {
+    width: 200px;
+    height: 200px;
+}
+
+.square-border-md {
+    width: 400px;
+    height: 400px;
+}
+
+.hanzi-font {
+    font-size: 20rem;
+}
+
+.pianpang-font {
+    font-size: 10rem;
+}
+
+.symbol-span {
+    font-size: 8rem;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 1024px) {
+    .square-border-sm {
+        width: 100px;
+        height: 100px;
+    }
+    .square-border-md {
+        width: 200px;
+        height: 200px;
+    }
+    .hanzi-font {
+        font-size: 10rem;
+    }
+    .pianpang-font {
+        font-size: 5rem;
+    }
+    .symbol-span {
+        font-size: 4rem;
+        font-weight: bold;
+    }
+}
+
+.red-border {
+    border: 1.5px solid red;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.def-col {
+    display: flex;
+    flex-direction: column
+}
+
+div {
+    text-align: center
+}
+
+.glyphicon-volume {
+    background: url('../images/volume.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-color: white;
+    height: 50px;
+    width: 50px;
+}
+
+.descriptive-p {
+    font-size: 2rem;
+    text-align: left;
 }
