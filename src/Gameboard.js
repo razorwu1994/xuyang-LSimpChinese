@@ -151,9 +151,7 @@ class Gameboard extends React.Component {
     this.intervalID = setInterval(() => {
       if (this.state.active < 2) {
         this.setState((state, props) => {
-          const deg =
-            (8 / this.state.charArray[state.active].length) *
-            Math.max(0.8, Math.random());
+          const deg = (8 / this.state.charArray[state.active].length) * 0.5;
           let position = state.position;
           position[state.active] = (position[state.active] + deg) % 360;
           let angleArray = state.charArray.map((group, groupIdx) =>
@@ -210,8 +208,32 @@ class Gameboard extends React.Component {
           let result = CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
             match[LEFT]
           ].includes(match[RIGHT]);
+          // console.log(
+          //   CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
+          //     match[LEFT]
+          //   ],
+          //   match[RIGHT],
+          //   result,
+          //   match,
+          //   HANZI_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
+          //     match[LEFT]
+          //   ][
+          //     CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
+          //       match[LEFT]
+          //     ].findIndex(idx => idx === match[RIGHT])
+          //   ]
+          // );
           if (result) {
-            console.log(match);
+            // console.log(
+
+            //   HANZI_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
+            //     match[LEFT]
+            //   ][
+            //     CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
+            //       match[LEFT]
+            //     ].findIndex(idx => idx === match[RIGHT])
+            //   ]
+            // );
             this.setState(state => ({
               result
             }));
