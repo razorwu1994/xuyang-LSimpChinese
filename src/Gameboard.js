@@ -160,14 +160,16 @@ class Gameboard extends React.Component {
     this.intervalID = setInterval(() => {
       if (this.state.active < 2) {
         this.setState((state, props) => {
-          const deg = (8 / this.state.charArray[state.active].length) * 0.5;
+          const speed = 1.2;
           let position = state.position;
-          position[state.active] = (position[state.active] + deg) % 360;
+          position[state.active] =
+            (position[state.active] + speed) %
+            (this.state.charArray[state.active].length * 120);
           let angleArray = state.charArray.map((group, groupIdx) =>
             group.map(
               (char, charIdx) =>
-                (charIdx * state.unit[groupIdx] + state.position[groupIdx]) %
-                360
+                (charIdx % this.state.charArray[state.active].length) * 120 +
+                state.position[groupIdx]
             )
           );
           return {

@@ -1,168 +1,165 @@
 .modal-body {
-    position: relative;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    padding: 1rem;
+  position: relative;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1rem;
 }
 
 .modal.show .modal-dialog {
-    -webkit-transform: none;
-    transform: none;
-    top: 30%;
-    transform: translateY(-30%);
-    margin: 10%;
+  -webkit-transform: none;
+  transform: none;
+  top: 30%;
+  transform: translateY(-30%);
+  margin: 10%;
 }
 
 .modal-content {
-    width: 80vw;
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    pointer-events: auto;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 0.3rem;
-    outline: 0;
-    margin: auto;
+  width: 80vw;
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+  margin: auto;
 }
 
 .infoWrapper {
-    width: 300px;
-    height: 300px;
-    background: white;
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    left: 300px;
-    padding: 20px;
+  width: 300px;
+  height: 300px;
+  background: white;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 300px;
+  padding: 20px;
 }
 
 .hanziWrapper {
-    width: 300px;
-    height: 300px;
-    background: white;
-    z-index: 999;
-    position: absolute;
-    top: 0;
-    left: 0px;
+  width: 300px;
+  height: 300px;
+  background: white;
+  z-index: 999;
+  position: absolute;
+  top: 0;
+  left: 0px;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .scene {
-    /* border: 1px solid #CCC; */
-    margin: 40px 0;
-    position: relative;
-    width: 210px;
-    height: 140px;
-    margin: 40px auto;
-    -webkit-perspective: 1000px;
-    top: 130px;
+  /* border: 1px solid #CCC; */
+  position: relative;
+  width: 210px;
+  height: 140px;
+  margin: 0px auto;
 }
 
 .carousel {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transform: translateZ(-288px);
-    transform-style: preserve-3d;
-    transition: transform 1s;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform: translateZ(-288px);
+  transform-style: preserve-3d;
+  transition: transform 1s;
 }
 
 .carousel__cell {
-    position: absolute;
-    width: 190px;
-    height: 120px;
-    left: 10px;
-    top: 10px;
-    border: 2px solid black;
-    line-height: 116px;
-    font-size: 80px;
-    font-weight: bold;
-    color: white;
-    text-align: center;
+  position: absolute;
+  width: 190px;
+  height: 120px;
+  left: 10px;
+  top: 10px;
+  border: 2px solid black;
+  line-height: 116px;
+  font-size: 80px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
 }
 
 .def-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
 }
 
 .square-border-sm {
-    width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
 }
 
 .square-border-md {
-    width: 400px;
-    height: 400px;
+  width: 400px;
+  height: 400px;
 }
 
 .hanzi-font {
-    font-size: 20rem;
+  font-size: 20rem;
 }
 
 .pianpang-font {
-    font-size: 10rem;
+  font-size: 10rem;
 }
 
 .symbol-span {
-    font-size: 8rem;
-    font-weight: bold;
+  font-size: 8rem;
+  font-weight: bold;
 }
 
 @media only screen and (max-width: 1024px) {
-    .square-border-sm {
-        width: 100px;
-        height: 100px;
-    }
-    .square-border-md {
-        width: 200px;
-        height: 200px;
-    }
-    .hanzi-font {
-        font-size: 10rem;
-    }
-    .pianpang-font {
-        font-size: 5rem;
-    }
-    .symbol-span {
-        font-size: 4rem;
-        font-weight: bold;
-    }
+  .square-border-sm {
+    width: 100px;
+    height: 100px;
+  }
+  .square-border-md {
+    width: 200px;
+    height: 200px;
+  }
+  .hanzi-font {
+    font-size: 10rem;
+  }
+  .pianpang-font {
+    font-size: 5rem;
+  }
+  .symbol-span {
+    font-size: 4rem;
+    font-weight: bold;
+  }
 }
 
 .red-border {
-    border: 1.5px solid red;
-    margin-left: auto;
-    margin-right: auto;
+  border: 1.5px solid red;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .def-col {
-    display: flex;
-    flex-direction: column
+  display: flex;
+  flex-direction: column;
 }
 
 div {
-    text-align: center
+  text-align: center;
 }
 
 .glyphicon-volume {
-    background: url('../images/volume.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-color: white;
-    height: 50px;
-    width: 50px;
+  background: url("../images/volume.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: white;
+  height: 50px;
+  width: 50px;
 }
 
 .descriptive-p {
-    font-size: 2rem;
-    text-align: left;
+  font-size: 2rem;
+  text-align: left;
 }

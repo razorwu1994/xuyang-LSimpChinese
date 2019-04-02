@@ -16,10 +16,9 @@ const colorPalatte = [
  */
 export const carouselStyle = (ordinal, colorUnit, angle, totalCarousels) => ({
   background: `${colorPalatte[ordinal % colorPalatte.length]}`,
-  transform: `rotateX(${angle}deg) translateZ(288px)`,
-  height: `${(16 / totalCarousels) * 110}px`,
-  lineHeight: `${(16 / totalCarousels) * 110}px`,
-  fontSize: `${Math.min((16 / totalCarousels) * 80, 80)}px`
+  transform: `translateY(${angle}px) `,
+  height: `fit-content`,
+  fontSize: `${Math.min((16 / totalCarousels) * 80, 100)}px`
 });
 
 export const getFacingUp = angleArray =>

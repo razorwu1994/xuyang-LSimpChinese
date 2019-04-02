@@ -20,8 +20,7 @@ export default class Pool extends React.Component {
               <div
                 class="scene"
                 style={{
-                  perspective: `${(800 * pool.charArray.length) / 16}px`,
-                  top: `${topConfig[pool.charArray.length]}px`
+                  perspective: `${(800 * pool.charArray.length) / 16}px`
                 }}
               >
                 <div class="carousel">
