@@ -17,19 +17,13 @@ export default class Pool extends React.Component {
         {poolData.map((pool, idx) => {
           return (
             <div className="poolWrapper">
-              <div
-                class="scene"
-                style={{
-                  perspective: `${(800 * pool.charArray.length) / 16}px`
-                }}
-              >
+              <div class="scene">
                 <div class="carousel">
                   {pool.charArray.map((char, id) => {
                     return (
                       <div
                         style={carouselStyle(
                           id,
-                          pool.unit,
                           pool.angleArray[id],
                           pool.charArray.length
                         )}

@@ -6,7 +6,7 @@ import CustomModal from "./components/CustomModal";
 import Pool from "./components/Pool";
 import { Link } from "react-router-dom";
 
-import { MAX, getFacingUp } from "./utils/rotate";
+import { MAX, getFacingUp, closest } from "./utils/rotate";
 import {
   S3Left,
   S3Right,
@@ -16,7 +16,6 @@ import {
   S7Right,
   S8Right
 } from "./constants";
-import zhua from "./images/zhua.png";
 const SPACE_KEY = 32;
 const LEFT = 0,
   RIGHT = 1;
@@ -112,6 +111,8 @@ const HANZI_MAP = {
     S8Right: [[], [], [], [], ["赐", "赌", "赋", "赔", "赏", "赎"], []]
   }
 };
+const MAX_CARD_STACK = 480;
+const TARGET_MIDDLE = 180;
 class Gameboard extends React.Component {
   state = {
     active: LEFT,
@@ -121,9 +122,6 @@ class Gameboard extends React.Component {
     angleArray: [[], []],
     pool: ["S3Left", "S3Right"],
     charArray: [S3Left, S3Right],
-    unit: [S3Left, S3Right].map(group =>
-      parseFloat(MAX / group.length, 10).toFixed(2)
-    ),
     meta: {
       pp1: "",
       pp2: "",
@@ -132,7 +130,8 @@ class Gameboard extends React.Component {
       pp1Definition: "",
       pp2Definition: "",
       resultDefinition: ""
-    }
+    },
+    target: {}
   };
   componentWillMount() {
     if (this.props.location.params == null) {
@@ -141,10 +140,7 @@ class Gameboard extends React.Component {
       let rightSet = RIGHT_MAP[this.props.location.params.stroke];
       this.setState(state => ({
         pool: ["S3Left", rightSet.name],
-        charArray: [S3Left, rightSet.value],
-        unit: [S3Left, rightSet.value].map(group =>
-          parseFloat(MAX / group.length, 10).toFixed(2)
-        )
+        charArray: [S3Left, rightSet.value]
       }));
     }
   }
@@ -163,13 +159,13 @@ class Gameboard extends React.Component {
           const speed = 1.2;
           let position = state.position;
           position[state.active] =
-            (position[state.active] + speed) %
-            (this.state.charArray[state.active].length * 120);
+            (position[state.active] + speed) % MAX_CARD_STACK;
           let angleArray = state.charArray.map((group, groupIdx) =>
             group.map(
               (char, charIdx) =>
-                (charIdx % this.state.charArray[state.active].length) * 120 +
-                state.position[groupIdx]
+                ((charIdx % this.state.charArray[state.active].length) * 120 +
+                  state.position[groupIdx]) %
+                MAX_CARD_STACK
             )
           );
           return {
@@ -195,33 +191,28 @@ class Gameboard extends React.Component {
     }
   };
   _adjustPosition = () => {
-    let { position, angleArray } = this.state;
-
+    let { position, angleArray, target } = this.state;
+    if (!target) target = {};
     switch (this.state.active) {
       case 0:
       case 1:
         //0:left,1:right,2:final
-        position[this.state.active] =
-          position[this.state.active] +
-          (MAX - getFacingUp(this.state.angleArray[this.state.active])); //add the difference
-        angleArray = this.state.charArray.map((group, groupIdx) =>
-          group.map(
-            (char, charIdx) =>
-              (charIdx * this.state.unit[groupIdx] +
-                this.state.position[groupIdx]) %
-              360
-          )
+
+        let targetIndx = angleArray[this.state.active].findIndex(
+          a =>
+            Math.round(a) ===
+            Math.round(closest(angleArray[this.state.active], TARGET_MIDDLE))
         );
+        target[this.state.active] = targetIndx;
         this.setState((state, props) => ({
           position,
-          angleArray
+          target
         }));
         if (this.state.active === 1) {
-          let match = this._determineMatch();
+          let match = target;
           let result = CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
             match[LEFT]
           ].includes(match[RIGHT]);
-
           if (result) {
             this.setState(state => ({
               meta: {
@@ -247,9 +238,19 @@ class Gameboard extends React.Component {
         break;
       case 2:
         clearInterval(this.intervalID);
+        let tempPosition = [0, 0];
+        angleArray = this.state.charArray.map((group, groupIdx) =>
+          group.map(
+            (char, charIdx) =>
+              ((charIdx % this.state.charArray[0].length) * 120 +
+                tempPosition[groupIdx]) %
+              MAX_CARD_STACK
+          )
+        );
         this.setState(state => ({
-          position: [0, 0],
-          result: null
+          position: tempPosition,
+          result: null,
+          target: {}
         }));
         break;
       case 3:
@@ -292,13 +293,11 @@ class Gameboard extends React.Component {
               poolData={[
                 {
                   angleArray: this.state.angleArray[0],
-                  charArray: this.state.charArray[0],
-                  unit: this.state.unit[0]
+                  charArray: this.state.charArray[0]
                 },
                 {
                   angleArray: this.state.angleArray[1],
-                  charArray: this.state.charArray[1],
-                  unit: this.state.unit[1]
+                  charArray: this.state.charArray[1]
                 }
               ]}
             />
