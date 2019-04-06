@@ -28,7 +28,7 @@ class Landing extends React.Component {
     this.setState((state, props) => ({ stroke }));
   }
   render() {
-    let style = { background: "#007bff", color: "white" };
+    let style = { background: "#721c24", color: "white" };
     return (
       <React.Fragment>
         <ButtonGroup size="lg" className="btnGroup">
@@ -74,7 +74,9 @@ class Landing extends React.Component {
               params: { stroke: this.state.stroke }
             }}
           >
-            <Button size="lg">Start</Button>
+            <Button size="lg" style={style}>
+              Start
+            </Button>
           </Link>
         </div>
       </React.Fragment>

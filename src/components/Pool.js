@@ -18,6 +18,7 @@ export default class Pool extends React.Component {
           return (
             <div className="poolWrapper">
               <div class="float" />
+              {idx === this.props.active && <div class="floatBolder" />}
               <div class="scene">
                 <div class="carousel">
                   {pool.charArray.map((char, id) => {

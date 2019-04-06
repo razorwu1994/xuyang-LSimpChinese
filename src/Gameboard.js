@@ -297,7 +297,9 @@ class Gameboard extends React.Component {
           meta={this.state.meta}
         />
         <Link to="/">
-          <Button size="lg">Back</Button>
+          <Button size="lg" style={{ background: "#721c24", color: "white" }}>
+            Back
+          </Button>
         </Link>
         <div className="grid-container">
           <div className="top" />
@@ -313,6 +315,7 @@ class Gameboard extends React.Component {
                   charArray: this.state.charArray[1]
                 }
               ]}
+              active={this.state.active}
             />
           </div>
           <div className="bottom">
