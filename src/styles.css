@@ -49,7 +49,7 @@ body {
 
 .result {
   color: #f54480;
-  font-size: 60px;
+  font-size: 48px;
   box-shadow: 1px 9px 20px 6px coral;
   border-radius: 30px;
 }
@@ -106,4 +106,13 @@ body {
   width: 80%;
   margin: auto;
   text-align: center;
+}
+
+.float {
+  background: #ffa500a8;
+  height: 120px;
+  position: absolute;
+  top: 180px;
+  width: 100%;
+  z-index: 100;
 }

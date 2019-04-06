@@ -80,8 +80,6 @@ export const S5Right = [
   "戋",
   "卯",
   "甲",
-  "泽",
-  "沿",
   "失"
 ];
 export const S6Right = [

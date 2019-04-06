@@ -14,17 +14,13 @@ const colorPalatte = [
  * @param {*} colorUnit 0~360 depends on the total number
  * @param {*} angleUnit 0~360 depends on the total number
  */
+// `${colorPalatte[ordinal % colorPalatte.length]}`
 export const carouselStyle = (ordinal, angle, totalCarousels) => ({
-  background: `${colorPalatte[ordinal % colorPalatte.length]}`,
+  background: "white",
   transform: `translateY(${angle}px) `,
   height: `fit-content`,
   fontSize: `100px`
 });
-
-export const getFacingUp = angleArray =>
-  angleArray.sort(
-    (a, b) => (Math.abs(a - 360) % 360) - (Math.abs(b - 360) % 360)
-  )[0];
 
 export const closest = (counts, goal) =>
   counts.length > 0

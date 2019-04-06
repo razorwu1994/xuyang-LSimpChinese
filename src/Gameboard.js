@@ -6,7 +6,7 @@ import CustomModal from "./components/CustomModal";
 import Pool from "./components/Pool";
 import { Link } from "react-router-dom";
 
-import { MAX, getFacingUp, closest } from "./utils/rotate";
+import { MAX, closest } from "./utils/rotate";
 import {
   S3Left,
   S3Right,
@@ -44,7 +44,7 @@ const CHAR_MAP = {
       [0, 11, 12, 13, 14, 15],
       [16, 17, 18, 19, 20, 21],
       [13, 22, 23, 24, 25, 26],
-      [0, 26, 27, 28, 29, 30]
+      [0, 26, 27, 28]
     ],
     S6Right: [
       [0, 1, 2, 3, 4, 5],
@@ -90,7 +90,7 @@ const HANZI_MAP = {
       ["怦", "怯", "怡", "怕", "怵", "怜"],
       ["眑", "眜", "眠", "眬", "眩", "眏"],
       ["贵", "费", "贷", "贱", "贻", "贸"],
-      ["钾", "铃", "铆", "铎", "铅", "铁"]
+      ["钾", "铃", "铆", "铁"]
     ],
     S6Right: [
       ["挖", "拱", "挥", "持", "挂", "挡"],
@@ -169,6 +169,13 @@ class Gameboard extends React.Component {
                 (MAX_CARD_STACK * this.state.charArray[groupIdx].length)
             )
           );
+          let lastElement = Math.max(...angleArray[state.active]);
+          angleArray[state.active][
+            angleArray[state.active].findIndex(e => e === lastElement)
+          ] =
+            lastElement -
+            MAX_CARD_STACK * (this.state.charArray[state.active].length - 1) -
+            120;
           return {
             position,
             angleArray
@@ -206,8 +213,17 @@ class Gameboard extends React.Component {
         );
         target[this.state.active] = targetIndx;
 
+        let lastElement = Math.max(...angleArray[this.state.active]);
+        angleArray[this.state.active][
+          angleArray[this.state.active].findIndex(e => e === lastElement)
+        ] =
+          lastElement -
+          MAX_CARD_STACK * this.state.charArray[this.state.active].length -
+          120;
+        console.log(lastElement, angleArray);
         this.setState((state, props) => ({
-          target
+          target,
+          angleArray
         }));
         console.log(
           this.state.charArray[LEFT][target[0]],
