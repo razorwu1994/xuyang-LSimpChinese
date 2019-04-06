@@ -205,25 +205,33 @@ class Gameboard extends React.Component {
       case 0:
       case 1:
         //0:left,1:right,2:final
-
         let targetIndx = angleArray[this.state.active].findIndex(
           a =>
             Math.round(a) ===
             Math.round(closest(angleArray[this.state.active], TARGET_MIDDLE))
         );
         target[this.state.active] = targetIndx;
+        let diff =
+          closest(angleArray[this.state.active], TARGET_MIDDLE) - TARGET_MIDDLE;
+        let tempPosition = position.slice();
+        tempPosition[this.state.active] =
+          tempPosition[this.state.active] - diff;
+        let tempAngleArray = angleArray.slice();
+        tempAngleArray[this.state.active] = tempAngleArray[
+          this.state.active
+        ].map(angle => angle - diff);
 
-        let lastElement = Math.max(...angleArray[this.state.active]);
-        angleArray[this.state.active][
-          angleArray[this.state.active].findIndex(e => e === lastElement)
-        ] =
-          lastElement -
-          MAX_CARD_STACK * this.state.charArray[this.state.active].length -
-          120;
-        console.log(lastElement, angleArray);
+        // let lastElement = Math.max(...angleArray[this.state.active]);
+        // angleArray[this.state.active][
+        //   angleArray[this.state.active].findIndex(e => e === lastElement)
+        // ] =
+        //   lastElement -
+        //   MAX_CARD_STACK * this.state.charArray[this.state.active].length -
+        //   120;
         this.setState((state, props) => ({
           target,
-          angleArray
+          angleArray: tempAngleArray,
+          position: tempPosition
         }));
         console.log(
           this.state.charArray[LEFT][target[0]],
@@ -259,9 +267,9 @@ class Gameboard extends React.Component {
         break;
       case 2:
         clearInterval(this.intervalID);
-        let tempPosition = [0, 0];
+        let resetPos = [0, 0];
         this.setState(state => ({
-          position: tempPosition,
+          position: resetPos,
           result: null,
           target: {}
         }));
