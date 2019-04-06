@@ -6,113 +6,23 @@ import CustomModal from "./components/CustomModal";
 import Pool from "./components/Pool";
 import { Link } from "react-router-dom";
 
-import { MAX, closest } from "./utils/rotate";
+import { closest } from "./utils/rotate";
 import {
   S3Left,
   S3Right,
-  S4Right,
-  S5Right,
-  S6Right,
-  S7Right,
-  S8Right
+  SPACE_KEY,
+  LEFT,
+  RIGHT,
+  MAX_PHASE,
+  CHAR_MAP,
+  RIGHT_MAP,
+  HANZI_MAP,
+  MAX_CARD_STACK,
+  TARGET_MIDDLE,
+  RESULT_DICTIONARY,
+  ppDictionary
 } from "./constants";
-const SPACE_KEY = 32;
-const LEFT = 0,
-  RIGHT = 1;
-const MAX_PHASE = 3;
-const CHAR_MAP = {
-  S3Left: {
-    S3Right: [
-      [0, 1, 2, 3, 4, 5],
-      [6, 7, 8, 9, 10, 12],
-      [5, 11, 12, 13, 14, 15],
-      [],
-      [],
-      []
-    ],
-    S4Right: [
-      [0, 1, 2, 3, 4, 5],
-      [6, 7, 8, 9, 10, 11],
-      [12, 13, 14, 15, 16, 17],
-      [8, 18, 19, 20, 21, 22],
-      [14, 22, 23, 24, 25],
-      [7, 25, 26, 27, 28, 29]
-    ],
-    S5Right: [
-      [0, 1, 2, 3, 4, 5],
-      [2, 6, 7, 8, 9, 10],
-      [0, 11, 12, 13, 14, 15],
-      [16, 17, 18, 19, 20, 21],
-      [13, 22, 23, 24, 25, 26],
-      [0, 26, 27, 28]
-    ],
-    S6Right: [
-      [0, 1, 2, 3, 4, 5],
-      [1, 6, 7, 8, 9, 10],
-      [11, 12, 13, 14, 15, 16],
-      [4, 11, 16, 17, 18, 19],
-      [20, 21, 22, 23, 24, 25],
-      [16, 27, 28, 29, 30, 31]
-    ],
-    S7Right: [[], [], [0, 1, 2, 3, 4, 5], [2, 6, 7, 8, 9, 10], [], []],
-    S8Right: [[], [], [], [], [0, 1, 2, 3, 4, 5], []]
-  }
-};
-const RIGHT_MAP = {
-  3: { name: `S3Right`, value: S3Right },
-  4: { name: `S4Right`, value: S4Right },
-  5: { name: `S5Right`, value: S5Right },
-  6: { name: `S6Right`, value: S6Right },
-  7: { name: `S7Right`, value: S7Right },
-  8: { name: `S8Right`, value: S8Right }
-};
-const HANZI_MAP = {
-  S3Left: {
-    S3Right: [
-      ["执", "扫", "托", "扛", "扩", "扚"],
-      ["汛", "汤", "汕", "江", "汗", "池"],
-      ["钗", "钏", "钓", "钒", "钎", "钍"],
-      [],
-      [],
-      []
-    ],
-    S4Right: [
-      ["投", "技", "抓", "抢", "扶", "把"],
-      ["汹", "汰", "沤", "沐", "沥", "汫"],
-      ["忪", "怀", "怅", "忧", "忷", "忡"],
-      ["眍", "盼", "眉", "看", "眈", "眨"],
-      ["账", "贫", "贬", "贩", "货", "购"],
-      ["钛", "钩", "钢", "钥", "钨", "钠"]
-    ],
-    S5Right: [
-      ["拎", "拐", "拉", "拦", "拥", "拇"],
-      ["泣", "泻", "泄", "泼", "泪", "河"],
-      ["怜", "怦", "怯", "怡", "怕", "怵"],
-      ["眑", "眜", "眠", "眬", "眩", "眏"],
-      ["贻", "贵", "费", "贷", "贱", "贸"],
-      ["铃", "铆", "钾", "铁"]
-    ],
-    S6Right: [
-      ["挖", "拱", "挥", "持", "挂", "挡"],
-      ["洲", "洋", "洗", "洒", "浇", "洪"],
-      ["恌", "恸", "恂", "恹", "恼", "恨"],
-      ["眼", "眺", "眭", "眸", "眯", "眶"],
-      ["贿", "赁", "赂", "赃", "贼", "资"],
-      ["铗", "铰", "铠", "铝", "银", "铜"]
-    ],
-    S7Right: [
-      [],
-      [],
-      ["悯", "悚", "悌", "悔", "悟", "悦"],
-      ["睇", "睐", "睑", "睆", "睄", "睃"],
-      [],
-      []
-    ],
-    S8Right: [[], [], [], [], ["赐", "赌", "赋", "赔", "赏", "赎"], []]
-  }
-};
-const MAX_CARD_STACK = 120;
-const TARGET_MIDDLE = 180;
+
 class Gameboard extends React.Component {
   state = {
     active: LEFT,
@@ -161,14 +71,26 @@ class Gameboard extends React.Component {
           position[state.active] =
             (position[state.active] + speed) %
             (MAX_CARD_STACK * this.state.charArray[state.active].length);
-          let angleArray = this.state.charArray.map((group, groupIdx) =>
-            group.map(
+
+          let angleArray;
+          if (state.angleArray[1].length === 0) {
+            angleArray = this.state.charArray.map((group, groupIdx) =>
+              group.map(
+                (char, charIdx) =>
+                  ((charIdx % this.state.charArray[groupIdx].length) * 120 +
+                    state.position[groupIdx]) %
+                  (MAX_CARD_STACK * this.state.charArray[groupIdx].length)
+              )
+            );
+          } else {
+            angleArray = state.angleArray;
+            angleArray[state.active] = this.state.charArray[state.active].map(
               (char, charIdx) =>
-                ((charIdx % this.state.charArray[groupIdx].length) * 120 +
-                  state.position[groupIdx]) %
-                (MAX_CARD_STACK * this.state.charArray[groupIdx].length)
-            )
-          );
+                ((charIdx % this.state.charArray[state.active].length) * 120 +
+                  state.position[state.active]) %
+                (MAX_CARD_STACK * this.state.charArray[state.active].length)
+            );
+          }
           let lastElement = Math.max(...angleArray[state.active]);
           angleArray[state.active][
             angleArray[state.active].findIndex(e => e === lastElement)
@@ -243,21 +165,24 @@ class Gameboard extends React.Component {
             match[LEFT]
           ].includes(match[RIGHT]);
           if (result) {
+            result =
+              HANZI_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
+                match[LEFT]
+              ][
+                CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
+                  match[LEFT]
+                ].findIndex(idx => idx === match[RIGHT])
+              ];
             this.setState(state => ({
               meta: {
                 pp1: this.state.charArray[LEFT][match[LEFT]],
                 pp2: this.state.charArray[RIGHT][match[RIGHT]],
-                result:
-                  HANZI_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
-                    match[LEFT]
-                  ][
-                    CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
-                      match[LEFT]
-                    ].findIndex(idx => idx === match[RIGHT])
-                  ],
-                pp1Definition: "",
-                pp2Definition: "",
-                resultDefinition: "",
+                result: result,
+                pp1Definition:
+                  ppDictionary[this.state.charArray[LEFT][match[LEFT]]],
+                pp2Definition:
+                  ppDictionary[this.state.charArray[LEFT][match[RIGHT]]],
+                resultDefinition: RESULT_DICTIONARY[result],
                 py: ""
               }
             }));
