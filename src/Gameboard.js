@@ -20,7 +20,8 @@ import {
   MAX_CARD_STACK,
   TARGET_MIDDLE,
   RESULT_DICTIONARY,
-  ppDictionary
+  ppDictionary,
+  pyDictionary
 } from "./constants";
 
 class Gameboard extends React.Component {
@@ -143,22 +144,12 @@ class Gameboard extends React.Component {
           this.state.active
         ].map(angle => angle - diff);
 
-        // let lastElement = Math.max(...angleArray[this.state.active]);
-        // angleArray[this.state.active][
-        //   angleArray[this.state.active].findIndex(e => e === lastElement)
-        // ] =
-        //   lastElement -
-        //   MAX_CARD_STACK * this.state.charArray[this.state.active].length -
-        //   120;
         this.setState((state, props) => ({
           target,
           angleArray: tempAngleArray,
           position: tempPosition
         }));
-        console.log(
-          this.state.charArray[LEFT][target[0]],
-          this.state.charArray[RIGHT][target[1]]
-        );
+
         if (this.state.active === 1) {
           let match = target;
           let result = CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
@@ -183,10 +174,14 @@ class Gameboard extends React.Component {
                 pp2Definition:
                   ppDictionary[this.state.charArray[LEFT][match[RIGHT]]],
                 resultDefinition: RESULT_DICTIONARY[result],
-                py: ""
+                py: pyDictionary[result]
               }
             }));
             this.handleShow();
+          } else {
+            this.setState((state, props) => ({
+              result
+            }));
           }
         }
         break;
