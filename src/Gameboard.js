@@ -172,7 +172,7 @@ class Gameboard extends React.Component {
                 pp1Definition:
                   ppDictionary[this.state.charArray[LEFT][match[LEFT]]],
                 pp2Definition:
-                  ppDictionary[this.state.charArray[LEFT][match[RIGHT]]],
+                  ppDictionary[this.state.charArray[RIGHT][match[RIGHT]]],
                 resultDefinition: RESULT_DICTIONARY[result],
                 py: pyDictionary[result]
               }
