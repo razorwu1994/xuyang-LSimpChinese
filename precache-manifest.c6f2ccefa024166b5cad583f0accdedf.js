@@ -12,19 +12,19 @@ self.__precacheManifest = [
     "url": "/xuyang-LSimpChinese/static/js/runtime~main.c7ad4f2e.js"
   },
   {
-    "revision": "c26d7383596bddd388b6",
-    "url": "/xuyang-LSimpChinese/static/js/main.46515572.chunk.js"
+    "revision": "2a39abfd31d892b49a82",
+    "url": "/xuyang-LSimpChinese/static/js/main.f0f119bd.chunk.js"
   },
   {
     "revision": "8564c4f5439afe02c65a",
     "url": "/xuyang-LSimpChinese/static/js/2.54fe7b5e.chunk.js"
   },
   {
-    "revision": "c26d7383596bddd388b6",
+    "revision": "2a39abfd31d892b49a82",
     "url": "/xuyang-LSimpChinese/static/css/main.38ddab58.chunk.css"
   },
   {
-    "revision": "27a2295e257c587ef707b1c22c6ed011",
+    "revision": "25f508555b3758ecac3ff6a5e0e53e9c",
     "url": "/xuyang-LSimpChinese/index.html"
   }
 ];
