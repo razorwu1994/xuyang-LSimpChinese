@@ -382,6 +382,8 @@ export const RESULT_DICTIONARY = {
 };
 
 export const ppDictionary = {
+  贝:
+    "Chinese characters with this part mean actions related to the money or economic activities.",
   扌:
     "Chinese characters with this part mean actions related to the hand or by hand.",
   忄:
@@ -429,6 +431,7 @@ export const ppDictionary = {
   旬: " full period",
   厌: "to loathe",
   艮: "boundary",
+  同: "same",
   闵: "mourn, grieve",
   束: "to control; bunch",
   弟: "brother",
