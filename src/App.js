@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
 
 import { ButtonGroup, Button, Row, Col } from "react-bootstrap";
