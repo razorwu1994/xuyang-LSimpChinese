@@ -15,14 +15,7 @@ export const S3Right = [
   "川",
   "凡",
   "千",
-  "土",
-  "反",
-  "化",
-  "勾",
-  "冈",
-  "月",
-  "乌",
-  "内"
+  "土"
 ];
 
 export const S4Right = [
@@ -48,7 +41,14 @@ export const S4Right = [
   "眉",
   "手",
   "冘",
-  "乏"
+  "乏",
+  "反",
+  "化",
+  "勾",
+  "冈",
+  "月",
+  "乌",
+  "内"
 ];
 
 export const S5Right = [
@@ -142,10 +142,10 @@ export const CHAR_MAP = {
     S3Right: [
       [0, 1, 2, 3, 4, 5],
       [6, 7, 8, 9, 10, 12],
-      [5, 11, 12, 13, 14, 15],
       [],
       [],
-      []
+      [],
+      [5, 11, 12, 13, 14, 15]
     ],
     S4Right: [
       [0, 1, 2, 3, 4, 5],
@@ -188,10 +188,10 @@ export const HANZI_MAP = {
     S3Right: [
       ["执", "扫", "托", "扛", "扩", "扚"],
       ["汛", "汤", "汕", "江", "汗", "池"],
-      ["钗", "钏", "钓", "钒", "钎", "钍"],
       [],
       [],
-      []
+      [],
+      ["钗", "钏", "钓", "钒", "钎", "钍"]
     ],
     S4Right: [
       ["投", "技", "抓", "抢", "扶", "把"],
@@ -378,7 +378,8 @@ export const RESULT_DICTIONARY = {
   铠: " armor",
   铝: " aluminum",
   银: "silver",
-  铜: " copper"
+  铜: " copper",
+  看: ""
 };
 
 export const ppDictionary = {
@@ -495,7 +496,12 @@ export const ppDictionary = {
   穵: "cave",
   军: "military",
   寺: "Temple",
-  当: "ding dong (bell)"
+  当: "ding dong (bell)",
+  千: "thousand",
+  凡: "ordinary",
+  川: "plain",
+  叉: "fork",
+  土: "dust"
 };
 
 export const pyDictionary = {

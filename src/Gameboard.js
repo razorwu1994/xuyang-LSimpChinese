@@ -225,7 +225,14 @@ class Gameboard extends React.Component {
           meta={this.state.meta}
         />
         <Link to="/">
-          <Button size="lg" style={{ background: "#721c24", color: "white" }}>
+          <Button
+            size="lg"
+            style={{
+              background: "#ff7807",
+              color: "white",
+              borderColor: "#ff7807"
+            }}
+          >
             Back
           </Button>
         </Link>

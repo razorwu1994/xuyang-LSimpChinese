@@ -28,7 +28,11 @@ class Landing extends React.Component {
     this.setState((state, props) => ({ stroke }));
   }
   render() {
-    let style = { background: "#721c24", color: "white" };
+    let style = {
+      background: "#ff7807",
+      color: "white",
+      borderColor: "#ff7807"
+    };
     return (
       <React.Fragment>
         <ButtonGroup size="lg" className="btnGroup">
