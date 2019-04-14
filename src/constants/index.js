@@ -378,8 +378,7 @@ export const RESULT_DICTIONARY = {
   铠: " armor",
   铝: " aluminum",
   银: "silver",
-  铜: " copper",
-  看: ""
+  铜: " copper"
 };
 
 export const ppDictionary = {
@@ -501,7 +500,16 @@ export const ppDictionary = {
   凡: "ordinary",
   川: "plain",
   叉: "fork",
-  土: "dust"
+  土: "dust",
+  冈: "ridge",
+  月: "moon",
+  乌: "dark",
+  内: "inside",
+  甲: "the unit that measures the area of the field",
+  失: "lost",
+  夹: "clip",
+  交: "cross",
+  岂: "auxiliary word"
 };
 
 export const pyDictionary = {
