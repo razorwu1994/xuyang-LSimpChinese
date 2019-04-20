@@ -1,14 +1,14 @@
 {
-  "main.css": "/xuyang-LSimpChinese/static/css/main.38ddab58.chunk.css",
-  "main.js": "/xuyang-LSimpChinese/static/js/main.401cf1f0.chunk.js",
-  "main.js.map": "/xuyang-LSimpChinese/static/js/main.401cf1f0.chunk.js.map",
-  "runtime~main.js": "/xuyang-LSimpChinese/static/js/runtime~main.c7ad4f2e.js",
-  "runtime~main.js.map": "/xuyang-LSimpChinese/static/js/runtime~main.c7ad4f2e.js.map",
-  "static/js/2.54fe7b5e.chunk.js": "/xuyang-LSimpChinese/static/js/2.54fe7b5e.chunk.js",
-  "static/js/2.54fe7b5e.chunk.js.map": "/xuyang-LSimpChinese/static/js/2.54fe7b5e.chunk.js.map",
-  "index.html": "/xuyang-LSimpChinese/index.html",
-  "precache-manifest.1c376c48c1ef70bc695bb56b4584259d.js": "/xuyang-LSimpChinese/precache-manifest.1c376c48c1ef70bc695bb56b4584259d.js",
-  "service-worker.js": "/xuyang-LSimpChinese/service-worker.js",
-  "static/css/main.38ddab58.chunk.css.map": "/xuyang-LSimpChinese/static/css/main.38ddab58.chunk.css.map",
-  "static/media/styles.css": "/xuyang-LSimpChinese/static/media/volume.cca2f3c8.png"
+  "main.css": "./static/css/main.e2030f29.chunk.css",
+  "main.js": "./static/js/main.00fea6e2.chunk.js",
+  "main.js.map": "./static/js/main.00fea6e2.chunk.js.map",
+  "runtime~main.js": "./static/js/runtime~main.d653cc00.js",
+  "runtime~main.js.map": "./static/js/runtime~main.d653cc00.js.map",
+  "static/js/2.d805693f.chunk.js": "./static/js/2.d805693f.chunk.js",
+  "static/js/2.d805693f.chunk.js.map": "./static/js/2.d805693f.chunk.js.map",
+  "index.html": "./index.html",
+  "precache-manifest.0fcc96737bd590551ab40718dc1d3722.js": "./precache-manifest.0fcc96737bd590551ab40718dc1d3722.js",
+  "service-worker.js": "./service-worker.js",
+  "static/css/main.e2030f29.chunk.css.map": "./static/css/main.e2030f29.chunk.css.map",
+  "static/media/styles.css": "./static/media/volume.cca2f3c8.png"
 }
