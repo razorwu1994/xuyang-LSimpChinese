@@ -26,7 +26,8 @@ const IColor = [
   "铗",
   "悯",
   "睐",
-  "赐"
+  "赐",
+  "池"
 ];
 
 const IIColor = [
@@ -176,6 +177,7 @@ const calcColor = result => {
   if (IVColor.includes(result)) return colorDictionary[3];
   if (VColor.includes(result)) return colorDictionary[4];
   if (VIColor.includes(result)) return colorDictionary[5];
+  return colorDictionary[0];
 };
 export default function CustomModal({ show, handleClose, meta }) {
   return (
