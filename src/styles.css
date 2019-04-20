@@ -138,3 +138,8 @@ body {
     width: 100%;
     z-index: 101;
 }
+
+.top {
+    display: inline-flex;
+    margin: auto;
+}

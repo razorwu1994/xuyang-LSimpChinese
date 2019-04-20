@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 
-import { Button } from "react-bootstrap";
+import { Button, FormControl, ButtonGroup } from "react-bootstrap";
 import CustomModal from "./components/CustomModal";
 import Pool from "./components/Pool";
 import { Link } from "react-router-dom";
@@ -149,40 +149,8 @@ class Gameboard extends React.Component {
           angleArray: tempAngleArray,
           position: tempPosition
         }));
-
         if (this.state.active === 1) {
-          let match = target;
-          let result = CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
-            match[LEFT]
-          ].includes(match[RIGHT]);
-          if (result) {
-            result =
-              HANZI_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
-                match[LEFT]
-              ][
-                CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
-                  match[LEFT]
-                ].findIndex(idx => idx === match[RIGHT])
-              ];
-            this.setState(state => ({
-              meta: {
-                pp1: this.state.charArray[LEFT][match[LEFT]],
-                pp2: this.state.charArray[RIGHT][match[RIGHT]],
-                result: result,
-                pp1Definition:
-                  ppDictionary[this.state.charArray[LEFT][match[LEFT]]],
-                pp2Definition:
-                  ppDictionary[this.state.charArray[RIGHT][match[RIGHT]]],
-                resultDefinition: RESULT_DICTIONARY[result],
-                py: pyDictionary[result]
-              }
-            }));
-            this.handleShow();
-          } else {
-            this.setState((state, props) => ({
-              result
-            }));
-          }
+          this.checkResult(target);
         }
         break;
       case 2:
@@ -216,7 +184,50 @@ class Gameboard extends React.Component {
   handleShow = () => {
     this.setState({ show: true });
   };
+
+  toggleAdmin = () => {
+    clearInterval(this.intervalID);
+    this.setState({ admin: !this.state.admin });
+  };
+
+  checkResult = target => {
+    console.log(target);
+    let match = target;
+    let result = CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
+      match[LEFT]
+    ].includes(match[RIGHT]);
+    if (result) {
+      result =
+        HANZI_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][match[LEFT]][
+          CHAR_MAP[this.state.pool[LEFT]][this.state.pool[RIGHT]][
+            match[LEFT]
+          ].findIndex(idx => idx === match[RIGHT])
+        ];
+      this.setState(state => ({
+        meta: {
+          pp1: this.state.charArray[LEFT][match[LEFT]],
+          pp2: this.state.charArray[RIGHT][match[RIGHT]],
+          result: result,
+          pp1Definition: ppDictionary[this.state.charArray[LEFT][match[LEFT]]],
+          pp2Definition:
+            ppDictionary[this.state.charArray[RIGHT][match[RIGHT]]],
+          resultDefinition: RESULT_DICTIONARY[result],
+          py: pyDictionary[result]
+        }
+      }));
+      this.handleShow();
+    } else {
+      this.setState((state, props) => ({
+        result
+      }));
+    }
+  };
   render() {
+    const style = {
+      background: "#ff7807",
+      color: "white",
+      borderColor: "#ff7807"
+    };
     return (
       <React.Fragment>
         <CustomModal
@@ -225,45 +236,103 @@ class Gameboard extends React.Component {
           meta={this.state.meta}
         />
         <Link to="/">
-          <Button
-            size="lg"
-            style={{
-              background: "#ff7807",
-              color: "white",
-              borderColor: "#ff7807"
-            }}
-          >
+          <Button size="lg" style={style}>
             Back
           </Button>
         </Link>
         <div className="grid-container">
-          <div className="top" />
-          <div className="middle">
-            <Pool
-              poolData={[
-                {
-                  angleArray: this.state.angleArray[0],
-                  charArray: this.state.charArray[0]
-                },
-                {
-                  angleArray: this.state.angleArray[1],
-                  charArray: this.state.charArray[1]
-                }
-              ]}
-              active={this.state.active}
-            />
+          <div className="top">
+            <ButtonGroup>
+              <Button
+                size="lg"
+                style={{
+                  ...style,
+                  height: "70px",
+                  width: "300px"
+                }}
+                onClick={this.toggleAdmin}
+              >
+                {!this.state.admin ? "进入测试" : "返回"}
+              </Button>
+              <FormControl
+                id="left"
+                placeholder="输入左偏旁"
+                onChange={e => {
+                  this.setState({
+                    testTarget: { ...this.state.testTarget, 0: e.target.value }
+                  });
+                }}
+                disabled={!this.state.admin}
+              />
+
+              <FormControl
+                id="right"
+                placeholder="输入右偏旁"
+                onChange={e => {
+                  this.setState({
+                    testTarget: { ...this.state.testTarget, 1: e.target.value }
+                  });
+                }}
+                disabled={!this.state.admin}
+              />
+              <Button
+                size="lg"
+                style={{
+                  ...style,
+                  height: "70px",
+                  width: "300px"
+                }}
+                onClick={() => {
+                  this.setState((state, props) => ({
+                    active: 0
+                  }));
+
+                  this.checkResult({
+                    0: this.state.charArray[LEFT].indexOf(
+                      this.state.testTarget[0]
+                    ),
+                    1: this.state.charArray[RIGHT].indexOf(
+                      this.state.testTarget[1]
+                    )
+                  });
+                }}
+                disabled={!this.state.admin}
+              >
+                测试结果
+              </Button>
+            </ButtonGroup>
           </div>
-          <div className="bottom">
-            <h1 className="result">
-              <strong>
-                {this.state.result != null
-                  ? this.state.result
-                    ? "Congrats"
-                    : "Oops,try again"
-                  : "Press Space to Select Character "}
-              </strong>
-            </h1>
-          </div>
+          {!this.state.admin && (
+            <React.Fragment>
+              <div className="middle">
+                <Pool
+                  poolData={[
+                    {
+                      angleArray: this.state.angleArray[0],
+                      charArray: this.state.charArray[0]
+                    },
+                    {
+                      angleArray: this.state.angleArray[1],
+                      charArray: this.state.charArray[1]
+                    }
+                  ]}
+                  active={this.state.active}
+                />
+              </div>
+              <div className="bottom">
+                <h1 className="result">
+                  <strong>
+                    {this.state.result != null
+                      ? this.state.result
+                        ? "Congrats"
+                        : "Oops,try again"
+                      : "Press Space to Select Character "}
+                  </strong>
+                </h1>
+              </div>
+            </React.Fragment>
+          )}
+          {this.state.admin && <div>测试结果仍然会出现</div>}
         </div>
       </React.Fragment>
     );
