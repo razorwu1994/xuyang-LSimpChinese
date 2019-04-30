@@ -5,7 +5,6 @@ import "./styles.css";
 const IColor = [
   "执",
   "汛",
-  "钓",
   "投",
   "汹",
   "忪",
@@ -27,13 +26,12 @@ const IColor = [
   "悯",
   "睐",
   "赐",
-  "池"
+  "钗"
 ];
 
 const IIColor = [
   "扫",
   "汤",
-  "钗",
   "技",
   "汰",
   "怅",
@@ -54,13 +52,14 @@ const IIColor = [
   "铰",
   "悚",
   "睑",
-  "赌"
+  "赌",
+  "钏"
 ];
 
 const IIIColor = [
   "托",
   "汕",
-  "钏",
+  "钓",
   "抓",
   "沤",
   "忷",
@@ -160,7 +159,8 @@ const VIColor = [
   "铜",
   "悦",
   "睃",
-  "赎"
+  "赎",
+  "池"
 ];
 const colorDictionary = [
   "#BA5656",
