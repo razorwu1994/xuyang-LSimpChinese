@@ -21,7 +21,8 @@ import {
   TARGET_MIDDLE,
   RESULT_DICTIONARY,
   ppDictionary,
-  pyDictionary
+  pyDictionary,
+  audioMap
 } from "./constants";
 
 class Gameboard extends React.Component {
@@ -40,7 +41,8 @@ class Gameboard extends React.Component {
       py: "",
       pp1Definition: "",
       pp2Definition: "",
-      resultDefinition: ""
+      resultDefinition: "",
+      audio: ""
     },
     target: {}
   };
@@ -212,7 +214,8 @@ class Gameboard extends React.Component {
           pp2Definition:
             ppDictionary[this.state.charArray[RIGHT][match[RIGHT]]],
           resultDefinition: RESULT_DICTIONARY[result],
-          py: pyDictionary[result]
+          py: pyDictionary[result],
+          audio: audioMap[result]
         }
       }));
       this.handleShow();

@@ -1,3 +1,150 @@
+import 托 from "../audio/stroke 3/托.mp3";
+import 执 from "../audio/stroke 3/执.mp3";
+import 扫 from "../audio/stroke 3/扫.mp3";
+import 扛 from "../audio/stroke 3/扛.mp3";
+import 扩 from "../audio/stroke 3/扩.mp3";
+import 扚 from "../audio/stroke 3/扚.mp3";
+import 江 from "../audio/stroke 3/江.mp3";
+import 汛 from "../audio/stroke 3/汛.mp3";
+import 汤 from "../audio/stroke 3/汤.mp3";
+import 汕 from "../audio/stroke 3/汕.mp3";
+import 汗 from "../audio/stroke 3/汗.mp3";
+import 池 from "../audio/stroke 3/池.mp3";
+import 钓 from "../audio/stroke 3/钓.mp3";
+import 钗 from "../audio/stroke 3/钗.mp3";
+import 钏 from "../audio/stroke 3/钏.mp3";
+import 钒 from "../audio/stroke 3/钒.mp3";
+import 钎 from "../audio/stroke 3/钎.mp3";
+import 钍 from "../audio/stroke 3/钍.mp3";
+
+import 投 from "../audio/stroke 4/投.mp3";
+import 技 from "../audio/stroke 4/技.mp3";
+import 抓 from "../audio/stroke 4/抓.mp3";
+import 抢 from "../audio/stroke 4/抢.mp3";
+import 扶 from "../audio/stroke 4/扶.mp3";
+import 把 from "../audio/stroke 4/把.mp3";
+import 汹 from "../audio/stroke 4/汹.mp3";
+import 汰 from "../audio/stroke 4/汰.mp3";
+import 沤 from "../audio/stroke 4/沤.mp3";
+import 沐 from "../audio/stroke 4/沐.mp3";
+import 沥 from "../audio/stroke 4/沥.mp3";
+import 汫 from "../audio/stroke 4/汫.mp3";
+import 忷 from "../audio/stroke 4/忷.mp3";
+import 忪 from "../audio/stroke 4/忪.mp3";
+import 怀 from "../audio/stroke 4/怀.mp3";
+import 怅 from "../audio/stroke 4/怅.mp3";
+import 忧 from "../audio/stroke 4/忧.mp3";
+import 忡 from "../audio/stroke 4/忡.mp3";
+import 眍 from "../audio/stroke 4/眍.mp3";
+import 盼 from "../audio/stroke 4/盼.mp3";
+import 看 from "../audio/stroke 4/看.mp3";
+import 眈 from "../audio/stroke 4/眈.mp3";
+import 眨 from "../audio/stroke 4/眨.mp3";
+import 账 from "../audio/stroke 4/账.mp3";
+import 贫 from "../audio/stroke 4/贫.mp3";
+import 贬 from "../audio/stroke 4/贬.mp3";
+import 贩 from "../audio/stroke 4/贩.mp3";
+import 货 from "../audio/stroke 4/货.mp3";
+import 购 from "../audio/stroke 4/购.mp3";
+import 钛 from "../audio/stroke 4/钛.mp3";
+import 钩 from "../audio/stroke 4/钩.mp3";
+import 钢 from "../audio/stroke 4/钢.mp3";
+import 钥 from "../audio/stroke 4/钥.mp3";
+import 钨 from "../audio/stroke 4/钨.mp3";
+import 钠 from "../audio/stroke 4/钠.mp3";
+
+// import 拎 from "../audio/stroke 5/拎.mp3";
+import 拐 from "../audio/stroke 5/拐.mp3";
+import 拉 from "../audio/stroke 5/拉.mp3";
+import 拦 from "../audio/stroke 5/拦.mp3";
+import 拥 from "../audio/stroke 5/拥.mp3";
+import 拇 from "../audio/stroke 5/拇.mp3";
+import 泣 from "../audio/stroke 5/泣.mp3";
+import 泻 from "../audio/stroke 5/泻.mp3";
+import 泄 from "../audio/stroke 5/泄.mp3";
+import 泼 from "../audio/stroke 5/泼.mp3";
+import 泪 from "../audio/stroke 5/泪.mp3";
+import 河 from "../audio/stroke 5/河.mp3";
+import 怜 from "../audio/stroke 5/怜.mp3";
+import 怦 from "../audio/stroke 5/怦.mp3";
+import 怯 from "../audio/stroke 5/怯.mp3";
+import 怡 from "../audio/stroke 5/怡.mp3";
+import 怕 from "../audio/stroke 5/怕.mp3";
+import 怵 from "../audio/stroke 5/怵.mp3";
+import 眑 from "../audio/stroke 5/眑.mp3";
+import 眜 from "../audio/stroke 5/眜.mp3";
+import 眠 from "../audio/stroke 5/眠.mp3";
+import 眬 from "../audio/stroke 5/眬.mp3";
+import 眩 from "../audio/stroke 5/眩.mp3";
+import 眏 from "../audio/stroke 5/眏.mp3";
+import 贻 from "../audio/stroke 5/贻.mp3";
+import 贵 from "../audio/stroke 5/贵.mp3";
+import 费 from "../audio/stroke 5/费.mp3";
+import 贷 from "../audio/stroke 5/贷.mp3";
+import 贱 from "../audio/stroke 5/贱.mp3";
+import 贸 from "../audio/stroke 5/贸.mp3";
+import 铃 from "../audio/stroke 5/铃.mp3";
+import 铆 from "../audio/stroke 5/铆.mp3";
+import 钾 from "../audio/stroke 5/钾.mp3";
+import 铁 from "../audio/stroke 5/铁.mp3";
+
+import 挖 from "../audio/stroke 6/挖.mp3";
+import 拱 from "../audio/stroke 6/拱.mp3";
+import 挥 from "../audio/stroke 6/挥.mp3";
+import 持 from "../audio/stroke 6/持.mp3";
+import 挂 from "../audio/stroke 6/挂.mp3";
+import 挡 from "../audio/stroke 6/挡.mp3";
+import 洪 from "../audio/stroke 6/洪.mp3";
+import 洲 from "../audio/stroke 6/洲.mp3";
+import 洋 from "../audio/stroke 6/洋.mp3";
+import 洗 from "../audio/stroke 6/洗.mp3";
+import 洒 from "../audio/stroke 6/洒.mp3";
+import 浇 from "../audio/stroke 6/浇.mp3";
+import 恌 from "../audio/stroke 6/恌.mp3";
+import 恸 from "../audio/stroke 6/恸.mp3";
+import 恂 from "../audio/stroke 6/恂.mp3";
+import 恹 from "../audio/stroke 6/恹.mp3";
+import 恼 from "../audio/stroke 6/恼.mp3";
+import 恨 from "../audio/stroke 6/恨.mp3";
+import 眭 from "../audio/stroke 6/眭.mp3";
+import 眺 from "../audio/stroke 6/眺.mp3";
+import 眼 from "../audio/stroke 6/眼.mp3";
+import 眸 from "../audio/stroke 6/眸.mp3";
+import 眯 from "../audio/stroke 6/眯.mp3";
+import 眶 from "../audio/stroke 6/眶.mp3";
+import 贿 from "../audio/stroke 6/贿.mp3";
+import 赁 from "../audio/stroke 6/赁.mp3";
+import 赂 from "../audio/stroke 6/赂.mp3";
+import 赃 from "../audio/stroke 6/赃.mp3";
+import 贼 from "../audio/stroke 6/贼.mp3";
+import 资 from "../audio/stroke 6/资.mp3";
+import 银 from "../audio/stroke 6/银.mp3";
+import 铗 from "../audio/stroke 6/铗.mp3";
+import 铰 from "../audio/stroke 6/铰.mp3";
+import 铠 from "../audio/stroke 6/铠.mp3";
+import 铝 from "../audio/stroke 6/铝.mp3";
+import 铜 from "../audio/stroke 6/铜.mp3";
+
+import 悯 from "../audio/stroke 7/悯.mp3";
+import 悚 from "../audio/stroke 7/悚.mp3";
+import 悌 from "../audio/stroke 7/悌.mp3";
+import 悔 from "../audio/stroke 7/悔.mp3";
+import 悟 from "../audio/stroke 7/悟.mp3";
+import 悦 from "../audio/stroke 7/悦.mp3";
+import 睇 from "../audio/stroke 7/睇.mp3";
+import 睐 from "../audio/stroke 7/睐.mp3";
+import 睑 from "../audio/stroke 7/睑.mp3";
+import 睆 from "../audio/stroke 7/睆.mp3";
+import 睄 from "../audio/stroke 7/睄.mp3";
+import 睃 from "../audio/stroke 7/睃.mp3";
+
+import 赐 from "../audio/stroke 8/赐.mp3";
+import 赌 from "../audio/stroke 8/赌.mp3";
+import 赋 from "../audio/stroke 8/赋.mp3";
+import 赔 from "../audio/stroke 8/赔.mp3";
+import 赏 from "../audio/stroke 8/赏.mp3";
+import 赎 from "../audio/stroke 8/赎.mp3";
+
 export const S3Left = ["扌", "氵", "忄", "目", "贝", "钅"];
 export const S3Right = [
   "丸",
@@ -654,4 +801,148 @@ export const pyDictionary = {
   铝: " lǚ",
   银: " yín",
   铜: " tóng"
+};
+
+export const audioMap = {
+  托: 托,
+  执: 执,
+  扫: 扫,
+  扛: 扛,
+  扩: 扩,
+  扚: 扚,
+  江: 江,
+  汛: 汛,
+  汤: 汤,
+  汕: 汕,
+  汗: 汗,
+  池: 池,
+  钓: 钓,
+  钗: 钗,
+  钏: 钏,
+  钒: 钒,
+  钎: 钎,
+  钍: 钍,
+  投: 投,
+  技: 技,
+  抓: 抓,
+  抢: 抢,
+  扶: 扶,
+  把: 把,
+  汹: 汹,
+  汰: 汰,
+  沤: 沤,
+  沐: 沐,
+  沥: 沥,
+  汫: 汫,
+  忷: 忷,
+  忪: 忪,
+  怀: 怀,
+  怅: 怅,
+  忧: 忧,
+  忡: 忡,
+  眍: 眍,
+  盼: 盼,
+  看: 看,
+  眈: 眈,
+  眨: 眨,
+  账: 账,
+  贫: 贫,
+  贬: 贬,
+  贩: 贩,
+  货: 货,
+  购: 购,
+  钛: 钛,
+  钩: 钩,
+  钢: 钢,
+  钥: 钥,
+  钨: 钨,
+  钠: 钠,
+  // 拎: 拎,
+  拐: 拐,
+  拉: 拉,
+  拦: 拦,
+  拥: 拥,
+  拇: 拇,
+  泣: 泣,
+  泻: 泻,
+  泄: 泄,
+  泼: 泼,
+  泪: 泪,
+  河: 河,
+  怜: 怜,
+  怦: 怦,
+  怯: 怯,
+  怡: 怡,
+  怕: 怕,
+  怵: 怵,
+  眑: 眑,
+  眜: 眜,
+  眠: 眠,
+  眬: 眬,
+  眩: 眩,
+  眏: 眏,
+  贻: 贻,
+  贵: 贵,
+  费: 费,
+  贷: 贷,
+  贱: 贱,
+  贸: 贸,
+  铃: 铃,
+  铆: 铆,
+  钾: 钾,
+  铁: 铁,
+  挖: 挖,
+  拱: 拱,
+  挥: 挥,
+  持: 持,
+  挂: 挂,
+  挡: 挡,
+  洪: 洪,
+  洲: 洲,
+  洋: 洋,
+  洗: 洗,
+  洒: 洒,
+  浇: 浇,
+  恌: 恌,
+  恸: 恸,
+  恂: 恂,
+  恹: 恹,
+  恼: 恼,
+  恨: 恨,
+  眭: 眭,
+  眺: 眺,
+  眼: 眼,
+  眸: 眸,
+  眯: 眯,
+  眶: 眶,
+  贿: 贿,
+  赁: 赁,
+  赂: 赂,
+  赃: 赃,
+  贼: 贼,
+  资: 资,
+  银: 银,
+  铗: 铗,
+  铰: 铰,
+  铠: 铠,
+  铝: 铝,
+  铜: 铜,
+  悯: 悯,
+  悚: 悚,
+  悌: 悌,
+  悔: 悔,
+  悟: 悟,
+  悦: 悦,
+  睇: 睇,
+  睐: 睐,
+  睑: 睑,
+  睆: 睆,
+  睄: 睄,
+  睃: 睃,
+  赐: 赐,
+  赌: 赌,
+  赋: 赋,
+  赔: 赔,
+  赏: 赏,
+  赎: 赎
 };

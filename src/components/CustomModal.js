@@ -207,6 +207,14 @@ export default function CustomModal({ show, handleClose, meta }) {
             <p className="descriptive-p">
               Pronunciation:
               {meta.py}
+              <audio src={meta.audio} id="audio" />
+              <Button
+                className="glyphicon-volume"
+                audio={meta.audio}
+                onClick={e => {
+                  document.getElementById("audio").play();
+                }}
+              />
             </p>
             <p className="descriptive-p">English:{meta.resultDefinition}</p>
           </div>
